@@ -1,2 +1,4 @@
-# OpenBook-Admin
-정주행 한국사 관리자 페이지 백엔드 파트
+# OpenBook
+OpenBook Backend Repository
+
+배포 사이트 : https://www.jeongjuhaeng.com/
