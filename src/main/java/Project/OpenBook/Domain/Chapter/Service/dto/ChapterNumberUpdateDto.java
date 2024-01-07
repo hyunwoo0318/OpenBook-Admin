@@ -11,9 +11,9 @@ import javax.validation.constraints.Min;
 @NoArgsConstructor
 public class ChapterNumberUpdateDto {
 
-    @Min(value = 1, message = "단원 번호를 입력해주세요.")
-    private Integer number;
+  @Min(value = 1, message = "단원 번호를 입력해주세요.")
+  private Integer number;
 
-    @Min(value = 1, message = "단원 ID를 입력해주세요.")
-    private Long id;
+  @Min(value = 1, message = "단원 ID를 입력해주세요.")
+  private Long id;
 }

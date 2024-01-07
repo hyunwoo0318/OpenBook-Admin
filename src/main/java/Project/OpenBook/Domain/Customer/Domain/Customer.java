@@ -21,121 +21,122 @@ import java.util.UUID;
 @NoArgsConstructor
 public class Customer extends BaseEntity implements UserDetails {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-    @Column(columnDefinition = "BINARY(16)")
-    private String code;
+  @Column(columnDefinition = "BINARY(16)")
+  private String code;
 
-//    @Column(nullable = false, unique = true)
-    private String nickName;
+  //    @Column(nullable = false, unique = true)
+  private String nickName;
 
-    private Integer solvedNum;
+  private Integer solvedNum;
 
-    private Integer age;
+  private Integer age;
 
-    private Integer expertise;
+  private Integer expertise;
 
-    private String roles;
+  private String roles;
 
-    private String provider;
-    private String password;
+  private String provider;
+  private String password;
 
-    @Column(name = "oAuth_id", length = 1000)
-    private String oAuthId;
+  @Column(name = "oAuth_id", length = 1000)
+  private String oAuthId;
 
-    private boolean isNew;
+  private boolean isNew;
 
-    private boolean isSubscribed;
+  private boolean isSubscribed;
 
-    private boolean isValidated = false;
+  private boolean isValidated = false;
 
-    @Builder
-    public Customer(String nickName, Integer age, Integer expertise, String roles, String provider, String oAuthId, Boolean isNew) {
-        this.nickName = nickName;
-        this.solvedNum = 0;
-        this.age = age;
-        this.expertise = expertise;
-        this.roles = roles;
-        this.provider = provider;
-        this.oAuthId = oAuthId;
-        this.code = UUID.randomUUID().toString().substring(0,16);
-        this.isSubscribed = true;
-        this.isValidated = true;
-        this.isNew = true;
-    }
+  @Builder
+  public Customer(
+      String nickName,
+      Integer age,
+      Integer expertise,
+      String roles,
+      String provider,
+      String oAuthId,
+      Boolean isNew) {
+    this.nickName = nickName;
+    this.solvedNum = 0;
+    this.age = age;
+    this.expertise = expertise;
+    this.roles = roles;
+    this.provider = provider;
+    this.oAuthId = oAuthId;
+    this.code = UUID.randomUUID().toString().substring(0, 16);
+    this.isSubscribed = true;
+    this.isValidated = true;
+    this.isNew = true;
+  }
 
-    public Customer(String nickName) {
-        this.nickName = nickName;
-        this.isValidated = false;
-    }
+  public Customer(String nickName) {
+    this.nickName = nickName;
+    this.isValidated = false;
+  }
 
-    public Customer(String nickName,String password, String roles){
-        this.nickName = nickName;
-        this.password = password;
-        this.roles = roles;
-    }
+  public Customer(String nickName, String password, String roles) {
+    this.nickName = nickName;
+    this.password = password;
+    this.roles = roles;
+  }
 
-    public Customer updateIsNew(Boolean isNew) {
-        this.isNew = isNew;
-        return this;
-    }
+  public Customer updateIsNew(Boolean isNew) {
+    this.isNew = isNew;
+    return this;
+  }
 
+  public void addDetails(String nickName, Integer age, Integer expertise) {
+    this.nickName = nickName;
+    this.age = age;
+    this.expertise = expertise;
+    this.isNew = false;
+  }
 
+  public Customer setInfo(String nickName, String roles, String provider, String oAuthId) {
+    this.nickName = nickName;
+    this.solvedNum = 0;
+    this.roles = roles;
+    this.provider = provider;
+    this.oAuthId = oAuthId;
+    this.code = UUID.randomUUID().toString().substring(0, 16);
+    this.isValidated = true;
+    return this;
+  }
 
-    public void addDetails(String nickName, Integer age, Integer expertise) {
-        this.nickName= nickName;
-        this.age = age;
-        this.expertise = expertise;
-        this.isNew = false;
-    }
+  @Override
+  public Collection<? extends GrantedAuthority> getAuthorities() {
+    List<GrantedAuthority> authorityList = new ArrayList<>();
+    authorityList.add(new SimpleGrantedAuthority(roles));
+    return authorityList;
+  }
 
+  /** UserDetails */
+  @Override
+  public String getUsername() {
+    return nickName;
+  }
 
-    public Customer setInfo(String nickName, String roles, String provider, String oAuthId) {
-        this.nickName = nickName;
-        this.solvedNum = 0;
-        this.roles = roles;
-        this.provider = provider;
-        this.oAuthId = oAuthId;
-        this.code = UUID.randomUUID().toString().substring(0,16);
-        this.isValidated = true;
-        return this;
-    }
+  @Override
+  public boolean isAccountNonExpired() {
+    return true;
+  }
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        List<GrantedAuthority> authorityList = new ArrayList<>();
-        authorityList.add(new SimpleGrantedAuthority(roles));
-        return authorityList;
-    }
+  @Override
+  public boolean isAccountNonLocked() {
+    return true;
+  }
 
+  @Override
+  public boolean isCredentialsNonExpired() {
+    return true;
+  }
 
-    /**
-     * UserDetails
-     */
-    @Override
-    public String getUsername() {
-        return nickName;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
-    }
+  @Override
+  public boolean isEnabled() {
+    return true;
+  }
 }

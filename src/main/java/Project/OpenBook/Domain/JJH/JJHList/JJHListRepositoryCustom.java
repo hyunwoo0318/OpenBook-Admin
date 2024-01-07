@@ -5,7 +5,7 @@ import java.util.Optional;
 
 public interface JJHListRepositoryCustom {
 
-    public List<JJHList> queryJJHListsWithChapterAndTimeline();
+  public List<JJHList> queryJJHListsWithChapterAndTimeline();
 
-    public Optional<JJHList> queryJJHList(Integer jjhNumber);
+  public Optional<JJHList> queryJJHList(Integer jjhNumber);
 }

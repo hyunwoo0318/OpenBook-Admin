@@ -9,5 +9,5 @@ import java.util.List;
 @Getter
 @AllArgsConstructor
 public class ExamQuestionCommentListDto {
-    private List<ExamQuestionCommentDto> commentList = new ArrayList<>();
+  private List<ExamQuestionCommentDto> commentList = new ArrayList<>();
 }

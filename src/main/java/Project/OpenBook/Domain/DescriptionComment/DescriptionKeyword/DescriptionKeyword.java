@@ -15,20 +15,20 @@ import javax.persistence.*;
 @Table(name = "description_keyword")
 public class DescriptionKeyword extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "description_id")
-    private Description description;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "description_id")
+  private Description description;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "keyword_id")
-    private Keyword keyword;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "keyword_id")
+  private Keyword keyword;
 
-    public DescriptionKeyword(Description description, Keyword keyword) {
-        this.description = description;
-        this.keyword = keyword;
-    }
+  public DescriptionKeyword(Description description, Keyword keyword) {
+    this.description = description;
+    this.keyword = keyword;
+  }
 }

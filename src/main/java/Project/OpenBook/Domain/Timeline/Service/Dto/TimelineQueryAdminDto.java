@@ -8,9 +8,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TimelineQueryAdminDto {
-    private String title;
-    private String era;
-    private Integer startDate;
-    private Integer endDate;
-    private Long id;
+  private String title;
+  private String era;
+  private Integer startDate;
+  private Integer endDate;
+  private Long id;
 }

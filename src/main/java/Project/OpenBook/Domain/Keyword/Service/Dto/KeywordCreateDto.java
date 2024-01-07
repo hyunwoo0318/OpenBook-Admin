@@ -14,14 +14,16 @@ import java.util.List;
 @NoArgsConstructor
 public class KeywordCreateDto {
 
+  @NotBlank(message = "키워드 이름을 입력해주세요.")
+  private String name;
 
-    @NotBlank(message = "키워드 이름을 입력해주세요.")
-    private String name;
-    private String comment;
-    @NotBlank(message = "토픽제목을 입력해주세요.")
-    private String topic;
-    private String file;
-    private String dateComment;
-    private Integer number;
-    private List<PrimaryDateDto> extraDateList = new ArrayList<>();
+  private String comment;
+
+  @NotBlank(message = "토픽제목을 입력해주세요.")
+  private String topic;
+
+  private String file;
+  private String dateComment;
+  private Integer number;
+  private List<PrimaryDateDto> extraDateList = new ArrayList<>();
 }

@@ -17,42 +17,42 @@ import java.util.List;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class QuestionCategory extends BaseEntity {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-    private String title;
+  private String title;
 
-    private Integer number;
+  private Integer number;
 
-    private Integer totalQuestionProb;
+  private Integer totalQuestionProb;
 
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "category_id")
+  private Category category;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "category_id")
-    private Category category;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "era_id")
+  private Era era;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "era_id")
-    private Era era;
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "questionCategory")
+  private List<Topic> topicList = new ArrayList<>();
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "questionCategory")
-    private List<Topic> topicList = new ArrayList<>();
+  public QuestionCategory(String title, Category category, Era era) {
+    this.totalQuestionProb = 0;
+    this.title = title;
+    this.category = category;
+    this.era = era;
+    this.number = 1000;
+  }
 
-    public QuestionCategory(String title, Category category, Era era) {
-        this.totalQuestionProb = 0;
-        this.title = title;
-        this.category = category;
-        this.era = era;
-        this.number = 1000;
-    }
+  public void updateQuestionCategory(String title, Category category, Era era) {
+    this.title = title;
+    this.category = category;
+    this.era = era;
+  }
 
-    public void updateQuestionCategory(String title, Category category, Era era) {
-        this.title = title;
-        this.category = category;
-        this.era = era;
-    }
-
-    public void updateNumber(Integer number) {
-        this.number =number;
-    }
+  public void updateNumber(Integer number) {
+    this.number = number;
+  }
 }

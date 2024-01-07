@@ -9,7 +9,5 @@ import java.util.Optional;
 @Repository
 public interface ChapterRepository extends JpaRepository<Chapter, Long>, ChapterRepositoryCustom {
 
-    public Optional<Chapter> findOneByNumber(int number);
-
-
+  public Optional<Chapter> findOneByNumber(int number);
 }

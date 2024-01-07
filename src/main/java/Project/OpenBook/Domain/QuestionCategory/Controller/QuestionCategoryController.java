@@ -17,43 +17,45 @@ import java.util.List;
 @RequiredArgsConstructor
 public class QuestionCategoryController {
 
-    private final QuestionCategoryService questionCategoryService;
+  private final QuestionCategoryService questionCategoryService;
 
-    @Operation(summary = "관리자 페이지에서 question-category 조회")
-    @GetMapping("/admin/question-categories")
-    public ResponseEntity<List<QuestionCategoryQueryAdminDto>> queryQuestionCategoryAdmin() {
-        List<QuestionCategoryQueryAdminDto> dtoList =
-                questionCategoryService.queryQuestionCategoryAdmin();
-        return new ResponseEntity<List<QuestionCategoryQueryAdminDto>>(dtoList, HttpStatus.OK);
-    }
+  @Operation(summary = "관리자 페이지에서 question-category 조회")
+  @GetMapping("/admin/question-categories")
+  public ResponseEntity<List<QuestionCategoryQueryAdminDto>> queryQuestionCategoryAdmin() {
+    List<QuestionCategoryQueryAdminDto> dtoList =
+        questionCategoryService.queryQuestionCategoryAdmin();
+    return new ResponseEntity<List<QuestionCategoryQueryAdminDto>>(dtoList, HttpStatus.OK);
+  }
 
+  @Operation(summary = "관리자 페이지에서 question-category 생성")
+  @PostMapping("/admin/question-categories")
+  public ResponseEntity<Void> addQuestionCategory(
+      @Validated @RequestBody QuestionCategoryAddUpdateDto dto) {
+    questionCategoryService.addQuestionCategory(dto);
+    return new ResponseEntity<Void>(HttpStatus.CREATED);
+  }
 
-    @Operation(summary = "관리자 페이지에서 question-category 생성")
-    @PostMapping("/admin/question-categories")
-    public ResponseEntity<Void> addQuestionCategory(@Validated @RequestBody QuestionCategoryAddUpdateDto dto) {
-        questionCategoryService.addQuestionCategory(dto);
-        return new ResponseEntity<Void>(HttpStatus.CREATED);
-    }
+  @Operation(summary = "관리자 페이지에서 question-category 수정")
+  @PatchMapping("/admin/question-categories/{questionCategoryId}")
+  public ResponseEntity<Void> updateQuestionCategory(
+      @PathVariable Long questionCategoryId,
+      @Validated @RequestBody QuestionCategoryAddUpdateDto dto) {
+    questionCategoryService.updateQuestionCategory(questionCategoryId, dto);
+    return new ResponseEntity<Void>(HttpStatus.OK);
+  }
 
-    @Operation(summary = "관리자 페이지에서 question-category 수정")
-    @PatchMapping("/admin/question-categories/{questionCategoryId}")
-    public ResponseEntity<Void> updateQuestionCategory(@PathVariable Long questionCategoryId,
-                                                   @Validated @RequestBody QuestionCategoryAddUpdateDto dto) {
-        questionCategoryService.updateQuestionCategory(questionCategoryId,dto);
-        return new ResponseEntity<Void>(HttpStatus.OK);
-    }
+  @Operation(summary = "관리자 페이지에서 question-category 삭제")
+  @DeleteMapping("/admin/question-categories/{questionCategoryId}")
+  public ResponseEntity<Void> deleteQuestionCategory(@PathVariable Long questionCategoryId) {
+    questionCategoryService.deleteQuestionCategory(questionCategoryId);
+    return new ResponseEntity<Void>(HttpStatus.OK);
+  }
 
-    @Operation(summary = "관리자 페이지에서 question-category 삭제")
-    @DeleteMapping("/admin/question-categories/{questionCategoryId}")
-    public ResponseEntity<Void> deleteQuestionCategory(@PathVariable Long questionCategoryId) {
-        questionCategoryService.deleteQuestionCategory(questionCategoryId);
-        return new ResponseEntity<Void>(HttpStatus.OK);
-    }
-
-    @Operation(summary = "관리자 페이지에서 question-category 순서 변경")
-    @PatchMapping("/admin/question-category-numbers")
-    public ResponseEntity<Void> updateQCNumber(@Validated @RequestBody List<QuestionCategoryNumberUpdateDto> dtoList) {
-        questionCategoryService.updateQCNumber(dtoList);
-        return new ResponseEntity<Void>(HttpStatus.OK);
-    }
+  @Operation(summary = "관리자 페이지에서 question-category 순서 변경")
+  @PatchMapping("/admin/question-category-numbers")
+  public ResponseEntity<Void> updateQCNumber(
+      @Validated @RequestBody List<QuestionCategoryNumberUpdateDto> dtoList) {
+    questionCategoryService.updateQCNumber(dtoList);
+    return new ResponseEntity<Void>(HttpStatus.OK);
+  }
 }

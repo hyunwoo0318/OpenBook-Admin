@@ -8,8 +8,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ChapterJJHAdminQueryDto {
-    private Integer number;
-    private String title;
-    private Integer jjhNumber;
-    private Long id;
+  private Integer number;
+  private String title;
+  private Integer jjhNumber;
+  private Long id;
 }

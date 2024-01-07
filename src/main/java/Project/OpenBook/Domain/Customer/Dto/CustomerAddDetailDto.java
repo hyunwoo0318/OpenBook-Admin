@@ -13,12 +13,14 @@ import javax.validation.constraints.NotBlank;
 @AllArgsConstructor
 public class CustomerAddDetailDto {
 
-    @NotBlank(message = "별명을 입력해주세요.")
-    private String nickname;
+  @NotBlank(message = "별명을 입력해주세요.")
+  private String nickname;
 
-    @Min(0)@Max(100)
-    private Integer expertise;
+  @Min(0)
+  @Max(100)
+  private Integer expertise;
 
-    @Min(1)@Max(100)
-    private Integer age;
+  @Min(1)
+  @Max(100)
+  private Integer age;
 }

@@ -7,6 +7,5 @@ import java.util.Optional;
 
 public interface RoundRepository extends JpaRepository<Round, Long> {
 
-    public Optional<Round> findRoundByNumber(Integer number);
-
+  public Optional<Round> findRoundByNumber(Integer number);
 }

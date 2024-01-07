@@ -12,11 +12,11 @@ import lombok.Setter;
 @AllArgsConstructor
 public class DescriptionDto {
 
-    private Long id;
-    private String content;
+  private Long id;
+  private String content;
 
-    public DescriptionDto(Description description) {
-        this.id = description.getId();
-        this.content = description.getContent();
-    }
+  public DescriptionDto(Description description) {
+    this.id = description.getId();
+    this.content = description.getContent();
+  }
 }

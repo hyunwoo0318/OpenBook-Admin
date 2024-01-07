@@ -19,41 +19,42 @@ import java.util.List;
 @Table(name = "exam_question")
 public class ExamQuestion extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-    private Integer number;
-    private Integer score;
-    private Integer answer;
+  private Integer number;
+  private Integer score;
+  private Integer answer;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "round_id")
-    private Round round;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "round_id")
+  private Round round;
 
-    @OneToMany(mappedBy = "examQuestion",fetch = FetchType.LAZY)
-    private List<Choice> choiceList = new ArrayList<>();
+  @OneToMany(mappedBy = "examQuestion", fetch = FetchType.LAZY)
+  private List<Choice> choiceList = new ArrayList<>();
 
+  @OneToOne(mappedBy = "examQuestion", fetch = FetchType.LAZY)
+  private Description description;
 
-    @OneToOne(mappedBy = "examQuestion", fetch = FetchType.LAZY)
-    private Description description;
+  @Enumerated(EnumType.STRING)
+  private ChoiceType choiceType;
 
-    @Enumerated(EnumType.STRING)
-    private ChoiceType choiceType;
+  public ExamQuestion(
+      Round round, Integer number, Integer score, Integer answer, ChoiceType choiceType) {
+    this.round = round;
+    this.number = number;
+    this.score = score;
+    this.answer = answer;
+    this.choiceType = choiceType;
+  }
 
-    public ExamQuestion(Round round, Integer number, Integer score,Integer answer, ChoiceType choiceType) {
-        this.round = round;
-        this.number = number;
-        this.score = score;
-        this.answer = answer;
-        this.choiceType = choiceType;
-    }
-
-    public ExamQuestion updateExamQuestion(Integer number, Integer score,Integer answer, ChoiceType choiceType) {
-        this.number = number;
-        this.score = score;
-        this.answer = answer;
-        this.choiceType = choiceType;
-        return this;
-    }
+  public ExamQuestion updateExamQuestion(
+      Integer number, Integer score, Integer answer, ChoiceType choiceType) {
+    this.number = number;
+    this.score = score;
+    this.answer = answer;
+    this.choiceType = choiceType;
+    return this;
+  }
 }

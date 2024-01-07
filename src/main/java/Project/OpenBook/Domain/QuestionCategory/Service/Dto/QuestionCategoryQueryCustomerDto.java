@@ -9,12 +9,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class QuestionCategoryQueryCustomerDto {
 
-    private Long id;
-    private String title;
-    private Integer number;
-    private Integer score;
-    private Integer topicCount;
-
-
-
+  private Long id;
+  private String title;
+  private Integer number;
+  private Integer score;
+  private Integer topicCount;
 }

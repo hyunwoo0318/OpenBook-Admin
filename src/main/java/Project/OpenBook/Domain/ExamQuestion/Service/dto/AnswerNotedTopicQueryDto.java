@@ -10,7 +10,6 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AnswerNotedTopicQueryDto {
-    private Integer roundNumber;
-    private List<AnswerNotedQuestionInfoDto> questionList;
-
+  private Integer roundNumber;
+  private List<AnswerNotedQuestionInfoDto> questionList;
 }

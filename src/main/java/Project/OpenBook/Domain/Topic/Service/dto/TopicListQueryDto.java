@@ -15,25 +15,26 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TopicListQueryDto {
-    private String title;
-    private String dateComment;
-    private String category;
-    private String era;
-    private List<PrimaryDateDto> extraDateList;
-    private List<KeywordDto> keywordList;
-    private Boolean isBookmarked;
+  private String title;
+  private String dateComment;
+  private String category;
+  private String era;
+  private List<PrimaryDateDto> extraDateList;
+  private List<KeywordDto> keywordList;
+  private Boolean isBookmarked;
 
-    public TopicListQueryDto(Boolean isBookmarked, Topic topic, List<KeywordDto> keywordList) {
-        this.isBookmarked = isBookmarked;
-        QuestionCategory questionCategory = topic.getQuestionCategory();
-        this.title = topic.getTitle();
-        this.dateComment = topic.getDateComment();
-        this.category = questionCategory.getCategory().getName();
-        this.era = questionCategory.getEra().getName();
-        this.extraDateList = topic.getTopicPrimaryDateList().stream()
-                .map(pd -> new PrimaryDateDto(pd.getExtraDate(), pd.getExtraDateComment()))
-                .sorted(Comparator.comparing(PrimaryDateDto::getExtraDate))
-                .collect(Collectors.toList());
-        this.keywordList = keywordList;
-    }
+  public TopicListQueryDto(Boolean isBookmarked, Topic topic, List<KeywordDto> keywordList) {
+    this.isBookmarked = isBookmarked;
+    QuestionCategory questionCategory = topic.getQuestionCategory();
+    this.title = topic.getTitle();
+    this.dateComment = topic.getDateComment();
+    this.category = questionCategory.getCategory().getName();
+    this.era = questionCategory.getEra().getName();
+    this.extraDateList =
+        topic.getTopicPrimaryDateList().stream()
+            .map(pd -> new PrimaryDateDto(pd.getExtraDate(), pd.getExtraDateComment()))
+            .sorted(Comparator.comparing(PrimaryDateDto::getExtraDate))
+            .collect(Collectors.toList());
+    this.keywordList = keywordList;
+  }
 }

@@ -9,6 +9,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ChapterInfoDto {
 
-    private String content;
-
+  private String content;
 }

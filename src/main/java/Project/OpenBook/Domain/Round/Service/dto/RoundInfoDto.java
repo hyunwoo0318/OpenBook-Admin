@@ -8,5 +8,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RoundInfoDto {
-    private Integer date;
+  private Integer date;
 }

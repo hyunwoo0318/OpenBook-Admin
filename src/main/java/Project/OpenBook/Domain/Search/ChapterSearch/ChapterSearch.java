@@ -17,20 +17,20 @@ import javax.persistence.Id;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 public class ChapterSearch {
-    @Column(unique = true)
-    @Field(type = FieldType.Text)
-    private String title;
+  @Column(unique = true)
+  @Field(type = FieldType.Text)
+  private String title;
 
-    @Id
-    @Field(type = FieldType.Long)
-    private Long id;
+  @Id
+  @Field(type = FieldType.Long)
+  private Long id;
 
-    @Field(type = FieldType.Integer)
-    private Integer chapterNumber;
+  @Field(type = FieldType.Integer)
+  private Integer chapterNumber;
 
-    public ChapterSearch(Chapter chapter) {
-        this.id = chapter.getId();
-        this.title = chapter.getTitle();
-        this.chapterNumber = chapter.getNumber();
-    }
+  public ChapterSearch(Chapter chapter) {
+    this.id = chapter.getId();
+    this.title = chapter.getTitle();
+    this.chapterNumber = chapter.getNumber();
+  }
 }

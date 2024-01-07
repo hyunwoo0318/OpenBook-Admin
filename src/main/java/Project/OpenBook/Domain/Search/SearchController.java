@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class SearchController {
 
-    private final SearchService searchService;
+  private final SearchService searchService;
 
-    @Operation(summary = "검색 기능")
-    @GetMapping("/search")
-    public ResponseEntity<SearchResultDto> searchByInput(@RequestParam("searchKey") String input) {
-        SearchResultDto dto = searchService.searchByInput(input);
-        return new ResponseEntity<SearchResultDto>(dto, HttpStatus.OK);
-    }
+  @Operation(summary = "검색 기능")
+  @GetMapping("/search")
+  public ResponseEntity<SearchResultDto> searchByInput(@RequestParam("searchKey") String input) {
+    SearchResultDto dto = searchService.searchByInput(input);
+    return new ResponseEntity<SearchResultDto>(dto, HttpStatus.OK);
+  }
 }

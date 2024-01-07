@@ -20,29 +20,30 @@ import javax.persistence.Lob;
 @Getter
 public class TopicSearch {
 
-    @Lob
-    @Field(type = FieldType.Text)
-    private String detail;
+  @Lob
+  @Field(type = FieldType.Text)
+  private String detail;
 
-    @Column(unique = true)
-    @Field(type = FieldType.Text)
-    private String title;
+  @Column(unique = true)
+  @Field(type = FieldType.Text)
+  private String title;
 
-    @Id
-    @Field(type = FieldType.Long)
-    private Long id;
+  @Id
+  @Field(type = FieldType.Long)
+  private Long id;
 
-    @Field(type = FieldType.Integer)
-    private Integer chapterNumber;
-    @Field(type = FieldType.Text)
-    private String chapterTitle;
+  @Field(type = FieldType.Integer)
+  private Integer chapterNumber;
 
-    public TopicSearch(Topic topic) {
-        this.id = topic.getId();
-        this.detail = topic.getDetail();
-        this.title = topic.getTitle();
-        Chapter chapter = topic.getChapter();
-        this.chapterNumber = chapter.getNumber();
-        this.chapterTitle = chapter.getTitle();
-    }
+  @Field(type = FieldType.Text)
+  private String chapterTitle;
+
+  public TopicSearch(Topic topic) {
+    this.id = topic.getId();
+    this.detail = topic.getDetail();
+    this.title = topic.getTitle();
+    Chapter chapter = topic.getChapter();
+    this.chapterNumber = chapter.getNumber();
+    this.chapterTitle = chapter.getTitle();
+  }
 }

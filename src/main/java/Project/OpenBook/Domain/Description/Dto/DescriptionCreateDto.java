@@ -14,9 +14,9 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 public class DescriptionCreateDto {
 
-    @NotBlank(message = "토픽 제목을 입력해주세요.")
-    private String topicTitle;
+  @NotBlank(message = "토픽 제목을 입력해주세요.")
+  private String topicTitle;
 
-    @NotNull(message = "하나 이상의 보기 내용을 입력해주세요.")
-    private String[] contentList;
+  @NotNull(message = "하나 이상의 보기 내용을 입력해주세요.")
+  private String[] contentList;
 }

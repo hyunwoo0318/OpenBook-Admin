@@ -51,11 +51,8 @@ public class InitConfig {
     private final PasswordEncoder passwordEncoder;
 
 
-
-
     /**
-     * ElasticSearch를 위한 init
-     * 각 topic의 title, id를 저장
+     * ElasticSearch를 위한 init 각 topic의 title, id를 저장
      */
     @Bean
     public void initElasticSearchIndex() {
@@ -64,16 +61,17 @@ public class InitConfig {
         keywordSearchRepository.deleteAll();
 
         List<ChapterSearch> chapterSearchList = chapterRepository.findAll().stream()
-                .map(ChapterSearch::new)
-                .collect(Collectors.toList());
+            .map(ChapterSearch::new)
+            .collect(Collectors.toList());
 
         List<TopicSearch> topicSearchList = topicRepository.queryTopicsWithChapter().stream()
-                .map(TopicSearch::new)
-                .collect(Collectors.toList());
+            .map(TopicSearch::new)
+            .collect(Collectors.toList());
 
-        List<KeywordSearch> keywordSearchList = keywordRepository.queryKeywordsWithChapter().stream()
-                .map(KeywordSearch::new)
-                .collect(Collectors.toList());
+        List<KeywordSearch> keywordSearchList = keywordRepository.queryKeywordsWithChapter()
+            .stream()
+            .map(KeywordSearch::new)
+            .collect(Collectors.toList());
 
         chapterSearchRepository.saveAll(chapterSearchList);
         topicSearchRepository.saveAll(topicSearchList);
@@ -91,9 +89,9 @@ public class InitConfig {
         List<TopicPrimaryDate> topicPrimaryDateList = topicPrimaryDateRepository.queryAllForInit();
         for (TopicPrimaryDate date : topicPrimaryDateList) {
             for (Timeline timeline : timelineList) {
-                if(timeline.getEra() == date.getTopic().getQuestionCategory().getEra() &&
+                if (timeline.getEra() == date.getTopic().getQuestionCategory().getEra() &&
                     timeline.getStartDate() <= date.getExtraDate() &&
-                    timeline.getEndDate() >= date.getExtraDate()){
+                    timeline.getEndDate() >= date.getExtraDate()) {
                     timeline.updateCount();
                     break;
                 }
@@ -102,9 +100,10 @@ public class InitConfig {
 
         for (KeywordPrimaryDate date : keywordPrimaryDateList) {
             for (Timeline timeline : timelineList) {
-                if(timeline.getEra() == date.getKeyword().getTopic().getQuestionCategory().getEra() &&
-                        timeline.getStartDate() <= date.getExtraDate() &&
-                        timeline.getEndDate() >= date.getExtraDate()){
+                if (timeline.getEra() == date.getKeyword().getTopic().getQuestionCategory().getEra()
+                    &&
+                    timeline.getStartDate() <= date.getExtraDate() &&
+                    timeline.getEndDate() >= date.getExtraDate()) {
                     timeline.updateCount();
                     break;
                 }
@@ -124,8 +123,6 @@ public class InitConfig {
 //            customerRepository.saveAll(Arrays.asList(admin1, admin2));
 //        }
 //    }
-
-
 
 
 }

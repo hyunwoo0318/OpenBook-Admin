@@ -8,9 +8,11 @@ import java.util.Optional;
 
 public interface JJHContentProgressRepositoryCustom {
 
-    public List<JJHContentProgress> queryJJHContentProgressForCustomer(Customer customer, Integer number);
+  public List<JJHContentProgress> queryJJHContentProgressForCustomer(
+      Customer customer, Integer number);
 
-    public Optional<JJHContentProgress> queryJJHContentProgressWithJJHContent(Customer customer, Integer number);
+  public Optional<JJHContentProgress> queryJJHContentProgressWithJJHContent(
+      Customer customer, Integer number);
 
-    public TotalProgressDto queryTotalProgressDto(Customer customer);
+  public TotalProgressDto queryTotalProgressDto(Customer customer);
 }

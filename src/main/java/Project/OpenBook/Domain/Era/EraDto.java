@@ -11,6 +11,6 @@ import javax.validation.constraints.NotBlank;
 @NoArgsConstructor
 public class EraDto {
 
-    @NotBlank(message = "시대 이름을 입력해주세요.")
-    private String name;
+  @NotBlank(message = "시대 이름을 입력해주세요.")
+  private String name;
 }

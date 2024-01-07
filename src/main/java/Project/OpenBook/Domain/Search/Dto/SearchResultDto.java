@@ -11,7 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SearchResultDto {
-    private List<ChapterSearchResultDto> chapterList = new ArrayList<>();
-    private List<TopicSearchResultDto> topicList = new ArrayList<>();
-    private List<KeywordSearchResultDto> keywordList = new ArrayList<>();
+  private List<ChapterSearchResultDto> chapterList = new ArrayList<>();
+  private List<TopicSearchResultDto> topicList = new ArrayList<>();
+  private List<KeywordSearchResultDto> keywordList = new ArrayList<>();
 }

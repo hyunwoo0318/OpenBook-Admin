@@ -19,31 +19,33 @@ import javax.persistence.Id;
 @Getter
 public class KeywordSearch {
 
-    @Field(type = FieldType.Text)
-    private String name;
+  @Field(type = FieldType.Text)
+  private String name;
 
-    @Field(type = FieldType.Text)
-    private String comment;
+  @Field(type = FieldType.Text)
+  private String comment;
 
-    @Id
-    @Field(type = FieldType.Long)
-    private Long id;
+  @Id
+  @Field(type = FieldType.Long)
+  private Long id;
 
-    @Field(type = FieldType.Integer)
-    private Integer chapterNumber;
-    @Field(type = FieldType.Text)
-    private String chapterTitle;
-    @Field(type = FieldType.Text)
-    private String topicTitle;
+  @Field(type = FieldType.Integer)
+  private Integer chapterNumber;
 
-    public KeywordSearch(Keyword keyword) {
-        this.id = keyword.getId();
-        this.name = keyword.getName();
-        this.comment = keyword.getComment();
-        Topic topic = keyword.getTopic();
-        this.topicTitle = topic.getTitle();
-        Chapter chapter = topic.getChapter();
-        this.chapterNumber= chapter.getNumber();
-        this.chapterTitle = chapter.getTitle();
-    }
+  @Field(type = FieldType.Text)
+  private String chapterTitle;
+
+  @Field(type = FieldType.Text)
+  private String topicTitle;
+
+  public KeywordSearch(Keyword keyword) {
+    this.id = keyword.getId();
+    this.name = keyword.getName();
+    this.comment = keyword.getComment();
+    Topic topic = keyword.getTopic();
+    this.topicTitle = topic.getTitle();
+    Chapter chapter = topic.getChapter();
+    this.chapterNumber = chapter.getNumber();
+    this.chapterTitle = chapter.getTitle();
+  }
 }

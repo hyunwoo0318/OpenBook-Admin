@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class KeywordNameCommentDto {
 
-    private String name;
-    private String comment;
+  private String name;
+  private String comment;
 }

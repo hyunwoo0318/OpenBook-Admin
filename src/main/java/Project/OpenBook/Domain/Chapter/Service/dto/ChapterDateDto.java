@@ -8,5 +8,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ChapterDateDto {
-    private String dateComment;
+  private String dateComment;
 }

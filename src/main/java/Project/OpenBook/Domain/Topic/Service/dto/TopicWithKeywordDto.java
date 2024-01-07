@@ -13,16 +13,17 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 public class TopicWithKeywordDto {
 
-    private String category;
-    private List<PrimaryDateDto> extraDateList;
-    private List<KeywordDto> keywordList;
+  private String category;
+  private List<PrimaryDateDto> extraDateList;
+  private List<KeywordDto> keywordList;
 
-    public TopicWithKeywordDto(Topic topic, List<KeywordDto> keywordList) {
-        this.category = topic.getQuestionCategory().getCategory().getName();
-        this.extraDateList = topic.getTopicPrimaryDateList().stream()
-                .map(pd -> new PrimaryDateDto(pd.getExtraDate(), pd.getExtraDateComment()))
-                .sorted(Comparator.comparing(PrimaryDateDto::getExtraDate))
-                .collect(Collectors.toList());
-        this.keywordList = keywordList;
-    }
+  public TopicWithKeywordDto(Topic topic, List<KeywordDto> keywordList) {
+    this.category = topic.getQuestionCategory().getCategory().getName();
+    this.extraDateList =
+        topic.getTopicPrimaryDateList().stream()
+            .map(pd -> new PrimaryDateDto(pd.getExtraDate(), pd.getExtraDateComment()))
+            .sorted(Comparator.comparing(PrimaryDateDto::getExtraDate))
+            .collect(Collectors.toList());
+    this.keywordList = keywordList;
+  }
 }

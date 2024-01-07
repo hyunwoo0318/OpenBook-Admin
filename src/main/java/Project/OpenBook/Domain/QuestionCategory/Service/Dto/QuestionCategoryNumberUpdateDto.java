@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class QuestionCategoryNumberUpdateDto {
-    private Long id;
-    private Integer number;
+  private Long id;
+  private Integer number;
 }

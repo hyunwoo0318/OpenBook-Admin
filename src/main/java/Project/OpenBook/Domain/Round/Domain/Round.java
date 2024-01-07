@@ -15,28 +15,26 @@ import java.util.List;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Round extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-    private Integer date;
+  private Integer date;
 
-    @Column(nullable = false, unique = true)
-    private Integer number;
+  @Column(nullable = false, unique = true)
+  private Integer number;
 
-    @OneToMany(mappedBy = "round", fetch = FetchType.LAZY)
-    private List<ExamQuestion> examQuestionList = new ArrayList<>();
+  @OneToMany(mappedBy = "round", fetch = FetchType.LAZY)
+  private List<ExamQuestion> examQuestionList = new ArrayList<>();
 
+  public Round(Integer date, Integer number) {
+    this.date = date;
+    this.number = number;
+  }
 
-
-    public Round(Integer date, Integer number) {
-        this.date = date;
-        this.number = number;
-    }
-
-    public Round updateRound(Integer date, Integer number) {
-        this.date = date;
-        this.number = number;
-        return this;
-    }
+  public Round updateRound(Integer date, Integer number) {
+    this.date = date;
+    this.number = number;
+    return this;
+  }
 }

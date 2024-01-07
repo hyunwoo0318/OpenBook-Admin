@@ -8,10 +8,10 @@ import lombok.Data;
 @AllArgsConstructor
 @Data
 public class TokenDto {
-    private String type;
-    private String accessToken;
-    private String refreshToken;
-    private Long customerId;
-    private String nickname;
-    private Boolean isNew;
+  private String type;
+  private String accessToken;
+  private String refreshToken;
+  private Long customerId;
+  private String nickname;
+  private Boolean isNew;
 }

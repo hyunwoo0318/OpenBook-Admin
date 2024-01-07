@@ -17,59 +17,54 @@ import java.util.List;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Chapter extends BaseEntity {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-    @Lob
-    private String content;
+  @Lob private String content;
 
-    @Column(nullable = false, unique = true)
-    private int number;
+  @Column(nullable = false, unique = true)
+  private int number;
 
-    @OneToMany(mappedBy = "chapter", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
-    private List<JJHContent> jjhContentList = new ArrayList<>();
+  @OneToMany(mappedBy = "chapter", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+  private List<JJHContent> jjhContentList = new ArrayList<>();
 
+  private String dateComment;
 
-    private String dateComment;
+  public Chapter(String title, int number) {
+    this.title = title;
+    this.number = number;
+  }
 
+  public Chapter(int number, String dateComment, String title) {
+    this.number = number;
+    this.dateComment = dateComment;
+    this.title = title;
+  }
 
-    public Chapter(String title, int number) {
-        this.title = title;
-        this.number = number;
-    }
+  @Column(nullable = false)
+  private String title;
 
-    public Chapter(int number, String dateComment, String title) {
-        this.number = number;
-        this.dateComment = dateComment;
-        this.title = title;
-    }
+  @OneToMany(mappedBy = "chapter", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+  private List<JJHList> jjhLists = new ArrayList<>();
 
-    @Column(nullable = false)
-    private String title;
+  @OneToMany(mappedBy = "chapter", fetch = FetchType.LAZY)
+  private List<Topic> topicList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "chapter",cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
-    private List<JJHList> jjhLists = new ArrayList<>();
+  public Chapter updateChapter(String title, int number, String dateComment) {
+    this.title = title;
+    this.number = number;
+    this.dateComment = dateComment;
+    return this;
+  }
 
-    @OneToMany(mappedBy = "chapter",fetch = FetchType.LAZY)
-    private List<Topic> topicList = new ArrayList<>();
+  public Chapter updateContent(String content) {
+    this.content = content;
+    return this;
+  }
 
-
-    public Chapter updateChapter(String title, int number, String dateComment) {
-        this.title = title;
-        this.number = number;
-        this.dateComment = dateComment;
-        return this;
-    }
-
-    public Chapter updateContent(String content) {
-        this.content = content;
-        return this;
-    }
-
-    public Chapter updateNumber(Integer number) {
-        this.number = number;
-        return this;
-    }
-
-
+  public Chapter updateNumber(Integer number) {
+    this.number = number;
+    return this;
+  }
 }

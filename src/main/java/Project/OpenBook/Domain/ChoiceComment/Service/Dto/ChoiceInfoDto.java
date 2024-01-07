@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ChoiceInfoDto {
-    private String choice;
-    private Integer choiceNumber;
-    private String choiceType;
+  private String choice;
+  private Integer choiceNumber;
+  private String choiceType;
 }

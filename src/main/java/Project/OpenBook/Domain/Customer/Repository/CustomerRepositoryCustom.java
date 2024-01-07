@@ -7,10 +7,9 @@ import java.util.Optional;
 
 public interface CustomerRepositoryCustom {
 
-    public Optional<Customer> queryCustomer(String oAuthId, String provider);
+  public Optional<Customer> queryCustomer(String oAuthId, String provider);
 
-    public List<Customer> queryCustomersNotValidated();
+  public List<Customer> queryCustomersNotValidated();
 
-    public Optional<Customer> queryCustomer(String code);
-
+  public Optional<Customer> queryCustomer(String code);
 }

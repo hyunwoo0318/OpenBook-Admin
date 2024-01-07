@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ChapterSearchResultDto {
-    private Integer chapterNumber;
-    private String chapterTitle;
+  private Integer chapterNumber;
+  private String chapterTitle;
 }

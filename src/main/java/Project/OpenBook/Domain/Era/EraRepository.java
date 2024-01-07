@@ -6,5 +6,5 @@ import java.util.Optional;
 
 public interface EraRepository extends JpaRepository<Era, Long> {
 
-    Optional<Era> findByName(String name);
+  Optional<Era> findByName(String name);
 }

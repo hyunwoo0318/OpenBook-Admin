@@ -15,30 +15,30 @@ import java.util.List;
 @RequiredArgsConstructor
 public class TimelineController {
 
-    private final TimelineService timelineService;
+  private final TimelineService timelineService;
 
-    @GetMapping("/admin/time-lines")
-    public ResponseEntity queryTimelinesAdmin() {
-        List<TimelineQueryAdminDto> dtoList = timelineService.queryTimelinesAdmin();
-        return new ResponseEntity(dtoList, HttpStatus.OK);
-    }
+  @GetMapping("/admin/time-lines")
+  public ResponseEntity queryTimelinesAdmin() {
+    List<TimelineQueryAdminDto> dtoList = timelineService.queryTimelinesAdmin();
+    return new ResponseEntity(dtoList, HttpStatus.OK);
+  }
 
-    @PostMapping("/admin/time-lines")
-    public ResponseEntity addTimeline(@Validated @RequestBody TimelineAddUpdateDto dto) {
-        timelineService.addTimeline(dto);
-        return new ResponseEntity(HttpStatus.CREATED);
-    }
+  @PostMapping("/admin/time-lines")
+  public ResponseEntity addTimeline(@Validated @RequestBody TimelineAddUpdateDto dto) {
+    timelineService.addTimeline(dto);
+    return new ResponseEntity(HttpStatus.CREATED);
+  }
 
-    @PatchMapping("/admin/time-lines/{id}")
-    public ResponseEntity updateTimeline(@Validated @RequestBody TimelineAddUpdateDto dto,
-                                         @PathVariable("id") Long id) {
-        timelineService.updateTimeline(dto,id);
-        return new ResponseEntity(HttpStatus.OK);
-    }
+  @PatchMapping("/admin/time-lines/{id}")
+  public ResponseEntity updateTimeline(
+      @Validated @RequestBody TimelineAddUpdateDto dto, @PathVariable("id") Long id) {
+    timelineService.updateTimeline(dto, id);
+    return new ResponseEntity(HttpStatus.OK);
+  }
 
-    @DeleteMapping("/admin/time-lines/{id}")
-    public ResponseEntity updateTimeline(@PathVariable("id") Long id) {
-        timelineService.deleteTimeline(id);
-        return new ResponseEntity(HttpStatus.OK);
-    }
+  @DeleteMapping("/admin/time-lines/{id}")
+  public ResponseEntity updateTimeline(@PathVariable("id") Long id) {
+    timelineService.deleteTimeline(id);
+    return new ResponseEntity(HttpStatus.OK);
+  }
 }

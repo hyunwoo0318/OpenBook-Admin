@@ -11,7 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class DescriptionContentIdDto {
 
-    private Long id;
+  private Long id;
 
-    private String content;
+  private String content;
 }

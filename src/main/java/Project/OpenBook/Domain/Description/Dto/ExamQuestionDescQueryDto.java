@@ -8,8 +8,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ExamQuestionDescQueryDto {
-    private Integer chapterNumber;
-    private String topicTitle;
-    private String name;
-    private Long id;
+  private Integer chapterNumber;
+  private String topicTitle;
+  private String name;
+  private Long id;
 }

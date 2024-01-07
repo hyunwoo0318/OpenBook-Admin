@@ -5,7 +5,5 @@ import Project.OpenBook.Domain.QuestionCategory.Domain.QuestionCategory;
 import java.util.List;
 
 public interface QuestionCategoryRepositoryCustom {
-    public List<QuestionCategory> queryQuestionCategoriesForAdmin();
-
-
+  public List<QuestionCategory> queryQuestionCategoriesForAdmin();
 }

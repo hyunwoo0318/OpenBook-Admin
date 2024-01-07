@@ -8,8 +8,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TimelineAddUpdateDto {
-    private String title;
-    private String era;
-    private Integer startDate;
-    private Integer endDate;
+  private String title;
+  private String era;
+  private Integer startDate;
+  private Integer endDate;
 }

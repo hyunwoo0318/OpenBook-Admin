@@ -9,5 +9,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ChapterTitleDto {
 
-    private String title;
+  private String title;
 }

@@ -11,10 +11,10 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class KeywordUserDto {
-    private String name;
-    private String comment;
-    private String file;
-    private String dateComment;
-    private Integer number;
-    private List<PrimaryDateDto> extraDateList;
+  private String name;
+  private String comment;
+  private String file;
+  private String dateComment;
+  private Integer number;
+  private List<PrimaryDateDto> extraDateList;
 }

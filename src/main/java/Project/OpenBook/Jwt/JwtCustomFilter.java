@@ -13,27 +13,29 @@ import java.io.IOException;
 @Component
 public class JwtCustomFilter implements Filter {
 
-    private final TokenManager tokenManager;
+  private final TokenManager tokenManager;
 
-    @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        HttpServletRequest req = (HttpServletRequest) request;
+  @Override
+  public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+      throws IOException, ServletException {
+    HttpServletRequest req = (HttpServletRequest) request;
 
-        String token = tokenManager.resolveRequest(req);
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        Authentication authentication = null;
-        if(token != null){
-            try{
-                tokenManager.validateToken(token);
-                authentication = tokenManager.getAuthorities(token);
-                System.out.println("authentication is ====" + authentication.toString() + " ------------------------------");
-                SecurityContextHolder.getContext().setAuthentication(authentication);
-            }catch(Exception e){
+    String token = tokenManager.resolveRequest(req);
+    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+    Authentication authentication = null;
+    if (token != null) {
+      try {
+        tokenManager.validateToken(token);
+        authentication = tokenManager.getAuthorities(token);
+        System.out.println(
+            "authentication is ===="
+                + authentication.toString()
+                + " ------------------------------");
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+      } catch (Exception e) {
 
-            }
-        }
-        chain.doFilter(request, response);
+      }
     }
-
+    chain.doFilter(request, response);
+  }
 }
-

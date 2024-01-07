@@ -5,7 +5,5 @@ import Project.OpenBook.Domain.Chapter.Domain.Chapter;
 import java.util.List;
 
 public interface ChapterRepositoryCustom {
-    public List<Chapter> queryChaptersWithjjhList();
-
-
+  public List<Chapter> queryChaptersWithjjhList();
 }

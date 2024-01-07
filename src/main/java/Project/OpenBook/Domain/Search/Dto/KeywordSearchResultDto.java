@@ -1,6 +1,5 @@
 package Project.OpenBook.Domain.Search.Dto;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,9 +8,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class KeywordSearchResultDto {
-    private Integer chapterNumber;
-    private String chapterTitle;
-    private String topicTitle;
-    private String keywordName;
-    private String keywordComment;
+  private Integer chapterNumber;
+  private String chapterTitle;
+  private String topicTitle;
+  private String keywordName;
+  private String keywordComment;
 }

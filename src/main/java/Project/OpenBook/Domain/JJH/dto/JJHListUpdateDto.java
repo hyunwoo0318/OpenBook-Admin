@@ -11,6 +11,6 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class JJHListUpdateDto {
-    private List<JJHUpdateDto> chapterList = new ArrayList<>();
-    private List<JJHUpdateDto> timelineList = new ArrayList<>();
+  private List<JJHUpdateDto> chapterList = new ArrayList<>();
+  private List<JJHUpdateDto> timelineList = new ArrayList<>();
 }

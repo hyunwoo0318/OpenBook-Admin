@@ -10,5 +10,5 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class KeywordListDto {
-    private List<String> keywordList;
+  private List<String> keywordList;
 }

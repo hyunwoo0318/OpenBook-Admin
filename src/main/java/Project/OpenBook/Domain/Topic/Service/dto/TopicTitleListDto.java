@@ -1,15 +1,13 @@
 package Project.OpenBook.Domain.Topic.Service.dto;
 
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-import java.util.List;
 
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
 public class TopicTitleListDto {
-    private List<String> topicList;
+  private List<String> topicList;
 }

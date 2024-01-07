@@ -15,32 +15,37 @@ import org.springframework.data.elasticsearch.core.ElasticsearchOperations;
 import org.springframework.data.elasticsearch.core.convert.ElasticsearchConverter;
 import org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories;
 
-
-@EnableElasticsearchRepositories(basePackageClasses = {TopicSearchRepository.class, KeywordSearchRepository.class,
-        ChapterSearchRepository.class})
+@EnableElasticsearchRepositories(
+    basePackageClasses = {
+      TopicSearchRepository.class,
+      KeywordSearchRepository.class,
+      ChapterSearchRepository.class
+    })
 @Configuration
 public class ElasticsearchConfig extends ElasticsearchConfiguration {
 
-    @Bean
-    @Override
-    public ElasticsearchClient elasticsearchClient(RestClient restClient) {
-        return ElasticsearchClients.createImperative(restClient, transportOptions());
-    }
+  @Bean
+  @Override
+  public ElasticsearchClient elasticsearchClient(RestClient restClient) {
+    return ElasticsearchClients.createImperative(restClient, transportOptions());
+  }
 
-    @Override
-    public ElasticsearchOperations elasticsearchOperations(ElasticsearchConverter elasticsearchConverter, ElasticsearchClient elasticsearchClient) {
-        ElasticsearchTemplate template = new ElasticsearchTemplate(elasticsearchClient, elasticsearchConverter);
-        template.setRefreshPolicy(refreshPolicy());
+  @Override
+  public ElasticsearchOperations elasticsearchOperations(
+      ElasticsearchConverter elasticsearchConverter, ElasticsearchClient elasticsearchClient) {
+    ElasticsearchTemplate template =
+        new ElasticsearchTemplate(elasticsearchClient, elasticsearchConverter);
+    template.setRefreshPolicy(refreshPolicy());
 
-        return template;
-    }
+    return template;
+  }
 
-    @Override
-    public ClientConfiguration clientConfiguration() {
-        return ClientConfiguration.builder()
-                .connectedTo("localhost:9200")
-                .withConnectTimeout(1000000)
-                .withSocketTimeout(500000)
-                .build();
-    }
+  @Override
+  public ClientConfiguration clientConfiguration() {
+    return ClientConfiguration.builder()
+        .connectedTo("localhost:9200")
+        .withConnectTimeout(1000000)
+        .withSocketTimeout(500000)
+        .build();
+  }
 }

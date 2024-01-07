@@ -8,19 +8,18 @@ import java.util.List;
 
 public interface DescriptionKeywordRepositoryCustom {
 
+  public List<DescriptionKeyword> queryDescriptionKeywordsForTopicList(Description description);
 
-    public List<DescriptionKeyword> queryDescriptionKeywordsForTopicList(Description description);
+  public List<DescriptionKeyword> queryDescriptionKeywordForExamQuestion(Integer roundNumber);
 
-    public List<DescriptionKeyword> queryDescriptionKeywordForExamQuestion(Integer roundNumber);
-    public List<DescriptionKeyword> queryDescriptionKeywordForExamQuestion(List<ExamQuestion> examQuestionList);
+  public List<DescriptionKeyword> queryDescriptionKeywordForExamQuestion(
+      List<ExamQuestion> examQuestionList);
 
-    public List<DescriptionKeyword> queryDescriptionKeywordsForTopicList(String topicTitle);
+  public List<DescriptionKeyword> queryDescriptionKeywordsForTopicList(String topicTitle);
 
-    public List<DescriptionKeyword> queryDescriptionKeywordsForTopicList(Integer chapterNum);
-    public List<DescriptionKeyword> queryDescriptionKeywordsForTopicList(List<Topic> topicList);
+  public List<DescriptionKeyword> queryDescriptionKeywordsForTopicList(Integer chapterNum);
 
+  public List<DescriptionKeyword> queryDescriptionKeywordsForTopicList(List<Topic> topicList);
 
-    public List<DescriptionKeyword> queryDescriptionKeywords(Long examQuestionId);
-
-
+  public List<DescriptionKeyword> queryDescriptionKeywords(Long examQuestionId);
 }

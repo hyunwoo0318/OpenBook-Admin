@@ -10,7 +10,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DescriptionCommentDto {
-    private String description;
-    private Long descriptionId;
-    private List<ExamQuestionDescQueryDto> commentList;
+  private String description;
+  private Long descriptionId;
+  private List<ExamQuestionDescQueryDto> commentList;
 }

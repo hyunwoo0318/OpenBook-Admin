@@ -1,6 +1,5 @@
 package Project.OpenBook.Handler.Exception.error;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,5 +8,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ErrorMsgDto {
-    private String error;
+  private String error;
 }

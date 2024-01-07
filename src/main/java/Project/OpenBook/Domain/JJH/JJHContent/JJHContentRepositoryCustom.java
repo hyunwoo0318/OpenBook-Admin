@@ -4,5 +4,5 @@ import java.util.List;
 
 public interface JJHContentRepositoryCustom {
 
-    public List<JJHContent> queryJJHContents();
+  public List<JJHContent> queryJJHContents();
 }

@@ -7,17 +7,17 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 public class TopicQueryInQuestionCategoryDto {
-    private String title;
-    private String category;
-    private String dateComment;
-    private Integer number;
-    private Boolean isBookmarked;
+  private String title;
+  private String category;
+  private String dateComment;
+  private Integer number;
+  private Boolean isBookmarked;
 
-    public TopicQueryInQuestionCategoryDto(Boolean isBookmarked, Topic topic) {
-        this.isBookmarked = isBookmarked;
-        this.title = topic.getTitle();
-        this.category = topic.getQuestionCategory().getCategory().getName();
-        this.dateComment = topic.getDateComment();
-        this.number = topic.getNumber();
-    }
+  public TopicQueryInQuestionCategoryDto(Boolean isBookmarked, Topic topic) {
+    this.isBookmarked = isBookmarked;
+    this.title = topic.getTitle();
+    this.category = topic.getQuestionCategory().getCategory().getName();
+    this.dateComment = topic.getDateComment();
+    this.number = topic.getNumber();
+  }
 }

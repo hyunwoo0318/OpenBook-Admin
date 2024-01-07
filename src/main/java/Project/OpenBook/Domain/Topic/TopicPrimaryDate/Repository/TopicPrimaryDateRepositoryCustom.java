@@ -6,6 +6,5 @@ import java.util.List;
 
 public interface TopicPrimaryDateRepositoryCustom {
 
-
-    public List<TopicPrimaryDate> queryAllForInit();
+  public List<TopicPrimaryDate> queryAllForInit();
 }

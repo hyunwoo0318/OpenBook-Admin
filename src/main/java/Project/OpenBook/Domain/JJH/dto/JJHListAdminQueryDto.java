@@ -12,7 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 public class JJHListAdminQueryDto {
 
-    private List<ChapterJJHAdminQueryDto> chapterList = new ArrayList<>();
+  private List<ChapterJJHAdminQueryDto> chapterList = new ArrayList<>();
 
-    private List<TimelineJJHAdminQueryDto> timelineList = new ArrayList<>();
+  private List<TimelineJJHAdminQueryDto> timelineList = new ArrayList<>();
 }

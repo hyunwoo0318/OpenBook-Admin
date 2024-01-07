@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class KeywordNumberDto {
 
-    private Long id;
-    private Integer number;
+  private Long id;
+  private Integer number;
 }

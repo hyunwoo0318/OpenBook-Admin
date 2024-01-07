@@ -6,11 +6,9 @@ import java.util.List;
 
 public interface TimelineRepositoryCustom {
 
+  public List<Timeline> queryTimelinesWithEra();
 
-    public List<Timeline> queryTimelinesWithEra();
+  public List<Timeline> queryTimelinesWithEraAndjjhList();
 
-    public List<Timeline> queryTimelinesWithEraAndjjhList();
-
-    public List<Timeline> queryAllForInit();
-
+  public List<Timeline> queryAllForInit();
 }

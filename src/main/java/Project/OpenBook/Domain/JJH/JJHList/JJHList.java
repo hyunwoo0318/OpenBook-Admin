@@ -18,40 +18,37 @@ import java.util.List;
 @Table(name = "jjh_list")
 public class JJHList {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-    private Integer number;
+  private Integer number;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "chapter_id")
-    private Chapter chapter;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "chapter_id")
+  private Chapter chapter;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "timeline_id")
-    private Timeline timeline;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "timeline_id")
+  private Timeline timeline;
 
-    @OneToMany(mappedBy = "jjhList", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-    private List<JJHContent> jjhContentList = new ArrayList<>();
+  @OneToMany(mappedBy = "jjhList", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+  private List<JJHContent> jjhContentList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "jjhList",fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-    private List<JJHListProgress> jjhListProgressList = new ArrayList<>();
+  @OneToMany(mappedBy = "jjhList", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+  private List<JJHListProgress> jjhListProgressList = new ArrayList<>();
 
+  public JJHList(Integer number, Chapter chapter) {
+    this.number = number;
+    this.chapter = chapter;
+  }
 
-    public JJHList(Integer number, Chapter chapter) {
-        this.number = number;
-        this.chapter = chapter;
-    }
+  public JJHList(Integer number, Timeline timeline) {
+    this.number = number;
+    this.timeline = timeline;
+  }
 
-    public JJHList(Integer number, Timeline timeline) {
-        this.number = number;
-        this.timeline = timeline;
-    }
-
-    public void updateNumber(Integer number) {
-        this.number = number;
-    }
-
-
+  public void updateNumber(Integer number) {
+    this.number = number;
+  }
 }

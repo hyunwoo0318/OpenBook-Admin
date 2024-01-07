@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class QuestionCategoryAddUpdateDto {
 
-    private String title;
-    private String era;
-    private String category;
+  private String title;
+  private String era;
+  private String category;
 }

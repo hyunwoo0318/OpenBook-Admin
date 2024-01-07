@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CustomerNicknameDto {
-    private String id;
-    private Boolean isNew;
+  private String id;
+  private Boolean isNew;
 }

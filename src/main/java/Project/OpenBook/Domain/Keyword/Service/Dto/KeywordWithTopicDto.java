@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class KeywordWithTopicDto {
-    private String name;
-    private String topicTitle;
-    private Long id;
+  private String name;
+  private String topicTitle;
+  private Long id;
 }

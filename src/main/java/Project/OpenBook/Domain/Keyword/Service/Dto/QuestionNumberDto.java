@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class QuestionNumberDto {
-    private Integer roundNumber;
-    private Integer questionNumber;
-    private String choice;
+  private Integer roundNumber;
+  private Integer questionNumber;
+  private String choice;
 }

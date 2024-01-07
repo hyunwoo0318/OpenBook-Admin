@@ -10,21 +10,22 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ExamQuestionDto {
-    private Long id;
-    private Boolean savedAnswerNote;
-    private Integer number;
-    private String description;
-    private List<ExamQuestionCommentDto> descriptionCommentList;
-    private Integer answer;
-    private String choiceType;
-    private Integer score;
-   // private List<QuestionChoiceDto> choiceList;
-    private Integer checkedChoiceKey;
+  private Long id;
+  private Boolean savedAnswerNote;
+  private Integer number;
+  private String description;
+  private List<ExamQuestionCommentDto> descriptionCommentList;
+  private Integer answer;
+  private String choiceType;
+  private Integer score;
+  // private List<QuestionChoiceDto> choiceList;
+  private Integer checkedChoiceKey;
 
-    public ExamQuestionDto setByCustomerRecord(Boolean savedAnswerNote, Integer score, Integer checkedChoiceKey) {
-        this.savedAnswerNote = savedAnswerNote;
-        this.score = score;
-        this.checkedChoiceKey = checkedChoiceKey;
-        return this;
-    }
+  public ExamQuestionDto setByCustomerRecord(
+      Boolean savedAnswerNote, Integer score, Integer checkedChoiceKey) {
+    this.savedAnswerNote = savedAnswerNote;
+    this.score = score;
+    this.checkedChoiceKey = checkedChoiceKey;
+    return this;
+  }
 }

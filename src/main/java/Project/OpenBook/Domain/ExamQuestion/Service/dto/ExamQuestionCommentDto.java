@@ -8,9 +8,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ExamQuestionCommentDto {
-    private String topicDateComment;
-    private String topicTitle;
-    private String keywordDateComment;
-    private String keywordName;
-    private String keywordComment;
+  private String topicDateComment;
+  private String topicTitle;
+  private String keywordDateComment;
+  private String keywordName;
+  private String keywordComment;
 }

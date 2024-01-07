@@ -13,21 +13,21 @@ import javax.persistence.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class TopicPrimaryDate extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-    private Integer extraDate;
+  private Integer extraDate;
 
-    private String extraDateComment;
+  private String extraDateComment;
 
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.REMOVE)
-    @JoinColumn(name = "topic_id")
-    private Topic topic;
+  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+  @JoinColumn(name = "topic_id")
+  private Topic topic;
 
-    public TopicPrimaryDate(Integer extraDate, String extraDateComment, Topic topic) {
-        this.extraDate = extraDate;
-        this.extraDateComment = extraDateComment;
-        this.topic = topic;
-    }
+  public TopicPrimaryDate(Integer extraDate, String extraDateComment, Topic topic) {
+    this.extraDate = extraDate;
+    this.extraDateComment = extraDateComment;
+    this.topic = topic;
+  }
 }

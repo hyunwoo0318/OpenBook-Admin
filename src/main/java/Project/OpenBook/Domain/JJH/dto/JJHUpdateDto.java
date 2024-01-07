@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class JJHUpdateDto {
-    private Long id;
+  private Long id;
 
-    private Integer jjhNumber;
+  private Integer jjhNumber;
 }

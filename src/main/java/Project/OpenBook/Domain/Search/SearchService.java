@@ -21,33 +21,47 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @Service
 public class SearchService {
-    private final TopicSearchRepository topicSearchRepository;
-    private final KeywordSearchRepository keywordSearchRepository;
-    private final ChapterSearchRepository chapterSearchRepository;
+  private final TopicSearchRepository topicSearchRepository;
+  private final KeywordSearchRepository keywordSearchRepository;
+  private final ChapterSearchRepository chapterSearchRepository;
 
-    @Transactional
-    public SearchResultDto searchByInput(String input) {
-        input = input.replaceAll(" ", "");
-        List<TopicSearch> topicSearchList = topicSearchRepository.queryTopicSearchNameByInput(input);
-        List<KeywordSearch> keywordNameSearchList = keywordSearchRepository.queryKeywordSearchNameByInput(input);
-        List<ChapterSearch> chapterSearchList = chapterSearchRepository.queryChapterSearchNameByInput(input);
+  @Transactional
+  public SearchResultDto searchByInput(String input) {
+    input = input.replaceAll(" ", "");
+    List<TopicSearch> topicSearchList = topicSearchRepository.queryTopicSearchNameByInput(input);
+    List<KeywordSearch> keywordNameSearchList =
+        keywordSearchRepository.queryKeywordSearchNameByInput(input);
+    List<ChapterSearch> chapterSearchList =
+        chapterSearchRepository.queryChapterSearchNameByInput(input);
 
-        List<ChapterSearchResultDto> chapterList = chapterSearchList.stream()
-                .map(cs -> new ChapterSearchResultDto(cs.getChapterNumber(), cs.getTitle()))
-                .sorted(Comparator.comparing(ChapterSearchResultDto::getChapterNumber))
-                .collect(Collectors.toList());
+    List<ChapterSearchResultDto> chapterList =
+        chapterSearchList.stream()
+            .map(cs -> new ChapterSearchResultDto(cs.getChapterNumber(), cs.getTitle()))
+            .sorted(Comparator.comparing(ChapterSearchResultDto::getChapterNumber))
+            .collect(Collectors.toList());
 
-        List<TopicSearchResultDto> topicList = topicSearchList.stream()
-                .map(ts -> new TopicSearchResultDto(ts.getChapterNumber(), ts.getChapterTitle(), ts.getTitle()))
-                .sorted(Comparator.comparing(TopicSearchResultDto::getChapterNumber))
-                .collect(Collectors.toList());
+    List<TopicSearchResultDto> topicList =
+        topicSearchList.stream()
+            .map(
+                ts ->
+                    new TopicSearchResultDto(
+                        ts.getChapterNumber(), ts.getChapterTitle(), ts.getTitle()))
+            .sorted(Comparator.comparing(TopicSearchResultDto::getChapterNumber))
+            .collect(Collectors.toList());
 
-        List<KeywordSearchResultDto> keywordNameList = keywordNameSearchList.stream()
-                .map(ks -> new KeywordSearchResultDto(ks.getChapterNumber(), ks.getChapterTitle(), ks.getTopicTitle(),
-                        ks.getName(), ks.getComment()))
-                .sorted(Comparator.comparing(KeywordSearchResultDto::getChapterNumber))
-                .collect(Collectors.toList());
+    List<KeywordSearchResultDto> keywordNameList =
+        keywordNameSearchList.stream()
+            .map(
+                ks ->
+                    new KeywordSearchResultDto(
+                        ks.getChapterNumber(),
+                        ks.getChapterTitle(),
+                        ks.getTopicTitle(),
+                        ks.getName(),
+                        ks.getComment()))
+            .sorted(Comparator.comparing(KeywordSearchResultDto::getChapterNumber))
+            .collect(Collectors.toList());
 
-        return new SearchResultDto(chapterList, topicList, keywordNameList);
-    }
+    return new SearchResultDto(chapterList, topicList, keywordNameList);
+  }
 }

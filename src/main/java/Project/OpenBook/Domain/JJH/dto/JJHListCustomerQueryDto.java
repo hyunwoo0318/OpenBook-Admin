@@ -11,6 +11,6 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class JJHListCustomerQueryDto {
-    private List<ChapterJJHCustomerQueryDto> chapterList = new ArrayList<>();
-    private List<TimelineJJHCustomerQueryDto> timelineList = new ArrayList<>();
+  private List<ChapterJJHCustomerQueryDto> chapterList = new ArrayList<>();
+  private List<TimelineJJHCustomerQueryDto> timelineList = new ArrayList<>();
 }

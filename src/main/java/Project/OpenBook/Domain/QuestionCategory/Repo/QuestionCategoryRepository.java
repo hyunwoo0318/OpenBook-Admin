@@ -7,7 +7,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
 
-public interface QuestionCategoryRepository extends JpaRepository<QuestionCategory, Long>, QuestionCategoryRepositoryCustom {
+public interface QuestionCategoryRepository
+    extends JpaRepository<QuestionCategory, Long>, QuestionCategoryRepositoryCustom {
 
-    public Optional<QuestionCategory> findByCategoryAndEra(Category category, Era era);
+  public Optional<QuestionCategory> findByCategoryAndEra(Category category, Era era);
 }
