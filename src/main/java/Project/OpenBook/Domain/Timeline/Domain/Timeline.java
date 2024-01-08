@@ -4,6 +4,7 @@ import Project.OpenBook.Domain.BaseEntity;
 import Project.OpenBook.Domain.Era.Era;
 import Project.OpenBook.Domain.JJH.JJHContent.JJHContent;
 import Project.OpenBook.Domain.JJH.JJHList.JJHList;
+import Project.OpenBook.Domain.LearningRecord.TimelineLearningRecord.Domain.TimelineLearningRecord;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -38,6 +39,9 @@ public class Timeline extends BaseEntity {
 
   @OneToMany(mappedBy = "timeline", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
   private List<JJHContent> jjhContentList = new ArrayList<>();
+
+  @OneToMany(mappedBy = "timeline", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+  private List<TimelineLearningRecord> timelineLearningRecordList = new ArrayList<>();
 
   public Timeline(String title, Integer startDate, Integer endDate, Era era) {
     this.count = 0;

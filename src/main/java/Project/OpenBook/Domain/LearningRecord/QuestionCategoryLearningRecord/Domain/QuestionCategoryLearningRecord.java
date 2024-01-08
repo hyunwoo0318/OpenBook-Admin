@@ -2,7 +2,6 @@ package Project.OpenBook.Domain.LearningRecord.QuestionCategoryLearningRecord.Do
 
 import Project.OpenBook.Domain.Customer.Domain.Customer;
 import Project.OpenBook.Domain.QuestionCategory.Domain.QuestionCategory;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -21,50 +20,53 @@ import lombok.NoArgsConstructor;
 @Table(name = "question_category_learning_record")
 public class QuestionCategoryLearningRecord {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-    @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
-    @JoinColumn(name = "question_category_id")
-    private QuestionCategory questionCategory;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "question_category_id")
+  private QuestionCategory questionCategory;
 
-    @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
-    @JoinColumn(name = "customer_id")
-    private Customer customer;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "customer_id")
+  private Customer customer;
 
-    private Integer answerCount = 0;
+  private Integer answerCount = 0;
 
-    private Integer wrongCount = 0;
+  private Integer wrongCount = 0;
 
-    private Double score;
+  private Double score;
 
-    public QuestionCategoryLearningRecord(QuestionCategory questionCategory, Customer customer) {
-        this.questionCategory = questionCategory;
-        this.customer = customer;
-        this.answerCount = 0;
-        this.wrongCount = 0;
-        this.score = 0.0;
-    }
+  public QuestionCategoryLearningRecord(QuestionCategory questionCategory, Customer customer) {
+    this.questionCategory = questionCategory;
+    this.customer = customer;
+    this.answerCount = 0;
+    this.wrongCount = 0;
+    this.score = 0.0;
+  }
 
-    public QuestionCategoryLearningRecord(QuestionCategory questionCategory, Customer customer,
-        Integer answerCount, Integer wrongCount) {
-        this.questionCategory = questionCategory;
-        this.customer = customer;
-        this.answerCount = answerCount;
-        this.wrongCount = wrongCount;
-        this.score = 0.0;
-    }
+  public QuestionCategoryLearningRecord(
+      QuestionCategory questionCategory,
+      Customer customer,
+      Integer answerCount,
+      Integer wrongCount) {
+    this.questionCategory = questionCategory;
+    this.customer = customer;
+    this.answerCount = answerCount;
+    this.wrongCount = wrongCount;
+    this.score = 0.0;
+  }
 
-    public QuestionCategoryLearningRecord updateCount(Integer answerCount, Integer wrongCount) {
-        this.answerCount += answerCount;
-        this.wrongCount += wrongCount;
-        return this;
-    }
+  public QuestionCategoryLearningRecord updateCount(Integer answerCount, Integer wrongCount) {
+    this.answerCount += answerCount;
+    this.wrongCount += wrongCount;
+    return this;
+  }
 
-    public void reset() {
-        this.answerCount = 0;
-        this.wrongCount = 0;
-        this.score = 0.0;
-    }
+  public void reset() {
+    this.answerCount = 0;
+    this.wrongCount = 0;
+    this.score = 0.0;
+  }
 }
