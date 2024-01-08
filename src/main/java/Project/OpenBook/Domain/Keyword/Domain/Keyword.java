@@ -6,17 +6,15 @@ import Project.OpenBook.Domain.DescriptionComment.DescriptionKeyword.Description
 import Project.OpenBook.Domain.Keyword.KeywordPrimaryDate.Domain.KeywordPrimaryDate;
 import Project.OpenBook.Domain.LearningRecord.KeywordLearningRecord.Domain.KeywordLearningRecord;
 import Project.OpenBook.Domain.Topic.Domain.Topic;
-import lombok.AccessLevel;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
-
 @Entity
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 public class Keyword extends BaseEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -62,6 +60,10 @@ public class Keyword extends BaseEntity {
     this.imageUrl = imageUrl;
     this.questionProb = KeywordUsageConst.KEYWORD_USAGE_DEFAULT;
   }
+
+  public Keyword(String name){
+    this.name = name;
+}
 
   public void updateNumber(Integer number) {
     this.number = number;
