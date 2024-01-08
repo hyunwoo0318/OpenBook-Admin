@@ -10,6 +10,7 @@ import Project.OpenBook.Domain.LearningRecord.KeywordLearningRecord.Domain.Keywo
 import Project.OpenBook.Domain.LearningRecord.KeywordLearningRecord.Repo.KeywordLearningRecordRepository;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.batch.core.BatchStatus;
 import org.springframework.batch.core.JobExecution;
@@ -54,6 +55,7 @@ public class RecordRefreshBatchTest {
     }
 
     @Test
+    @DisplayName("키워드 학습 정도 레코드 생성 작업 테스트")
     public void batchKeywordRecordTest(){
         JobExecution jobExecution = jobLauncherTestUtils.launchStep("keyword_record_refresh_step");
 

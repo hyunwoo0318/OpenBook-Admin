@@ -42,7 +42,9 @@ public class RecordJob {
 
   @Bean
   public Job Job_Record() {
-    return jobBuilderFactory.get("Record_refresh_job").start(KeywordRefreshStep()).build();
+    return jobBuilderFactory.get("Record_refresh_job")
+        .start(KeywordRefreshStep())
+        .build();
   }
 
   @Bean
@@ -93,6 +95,8 @@ public class RecordJob {
       return newRecordList;
     };
   }
+
+
 
   @Bean
   public ItemReader<Keyword> keywordRecordReader() {
