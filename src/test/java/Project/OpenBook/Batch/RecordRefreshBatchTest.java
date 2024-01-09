@@ -6,6 +6,7 @@ import Project.OpenBook.Domain.Customer.Domain.Customer;
 import Project.OpenBook.Domain.Customer.Repository.CustomerRepository;
 import Project.OpenBook.Domain.Keyword.Domain.Keyword;
 import Project.OpenBook.Domain.Keyword.Repository.KeywordRepository;
+import Project.OpenBook.Domain.Keyword.Service.KeywordService;
 import Project.OpenBook.Domain.LearningRecord.KeywordLearningRecord.Domain.KeywordLearningRecord;
 import Project.OpenBook.Domain.LearningRecord.KeywordLearningRecord.Repo.KeywordLearningRecordRepository;
 import java.util.List;
@@ -23,50 +24,59 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 @SpringBatchTest
 public class RecordRefreshBatchTest {
-    
-    @Autowired
-    KeywordRepository keywordRepository;
-    
-    @Autowired
-    CustomerRepository customerRepository;
-    
-    @Autowired
-    KeywordLearningRecordRepository keywordLearningRecordRepository;
 
-    @Autowired
-    private JobLauncherTestUtils jobLauncherTestUtils;
+  @Autowired KeywordRepository keywordRepository;
 
-    @Autowired
-    private JobRepositoryTestUtils jobRepositoryTestUtils;
+  @Autowired CustomerRepository customerRepository;
 
-    @BeforeEach
-    public void initDB_RemoveExecution(){
-        for(int i=0;i<100;i++){
-            Keyword keyword = new Keyword("keyword" + i);
-            keywordRepository.save(keyword);
-        }
+  @Autowired KeywordLearningRecordRepository keywordLearningRecordRepository;
 
-        for(int i=0;i<10;i++){
-            Customer customer = new Customer();
-            customerRepository.save(customer);
-        }
+  @Autowired KeywordService keywordService;
 
-        jobRepositoryTestUtils.removeJobExecutions();
+  @Autowired private JobLauncherTestUtils jobLauncherTestUtils;
+
+  @Autowired private JobRepositoryTestUtils jobRepositoryTestUtils;
+
+  @BeforeEach
+  public void initDB_RemoveExecution() {
+    for (int i = 0; i < 100; i++) {
+      Keyword keyword = new Keyword("keyword" + i);
+      keywordRepository.save(keyword);
     }
 
-    @Test
-    @DisplayName("키워드 학습 정도 레코드 생성 작업 테스트")
-    public void batchKeywordRecordTest(){
-        JobExecution jobExecution = jobLauncherTestUtils.launchStep("keyword_record_refresh_step");
+    for (int i = 0; i < 10; i++) {
+      Customer customer = new Customer();
+      customerRepository.save(customer);
+    }
 
-        assertThat(jobExecution.getStatus()).isEqualTo(BatchStatus.COMPLETED);
-
-        List<Keyword> keywordList = keywordRepository.findAll();
-        List<Customer> customerList = customerRepository.findAll();
-        List<KeywordLearningRecord> recordList = keywordLearningRecordRepository.findAll();
-
-        assertThat(recordList.size()).isEqualTo(1000); //100 * 10
-
+    jobRepositoryTestUtils.removeJobExecutions();
   }
 
+  @Test
+  @DisplayName("키워드 학습 정도 레코드 생성 작업 테스트")
+  public void batchKeywordRecordTest() {
+    long start = System.currentTimeMillis();
+    JobExecution jobExecution = jobLauncherTestUtils.launchStep("keyword_record_refresh_step");
+    long end = System.currentTimeMillis();
+
+    assertThat(jobExecution.getStatus()).isEqualTo(BatchStatus.COMPLETED);
+
+    List<Keyword> keywordList = keywordRepository.findAll();
+    List<Customer> customerList = customerRepository.findAll();
+    List<KeywordLearningRecord> recordList = keywordLearningRecordRepository.findAll();
+
+    assertThat(recordList.size()).isEqualTo(1000); // 100 * 10
+    System.out.println(end - start + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1");
+  }
+
+  @Test
+  @DisplayName("시간 비교용")
+  public void generalKeywordRecordTest() {
+
+    long start = System.currentTimeMillis();
+    keywordService.tempLearningRecordInit();
+    long end = System.currentTimeMillis();
+
+    System.out.println(end - start + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1");
+  }
 }

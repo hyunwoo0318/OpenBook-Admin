@@ -38,6 +38,7 @@ public class KeywordService {
   private final TopicRepository topicRepository;
   private final ImageService imageService;
 
+
   @Transactional(readOnly = true)
   public List<KeywordWithTopicDto> queryTotalKeywords() {
     return keywordRepository.queryKeywordsWithTopic().stream()
@@ -177,4 +178,35 @@ public class KeywordService {
       keyword.updateNumber(number);
     }
   }
-}
+
+//  @Transactional
+//  public void tempLearningRecordInit(){
+//    List<Customer> customerList = customerRepository.findAll();
+//
+//
+//    List<Keyword> keywordList = keywordRepository.findAll();
+//
+//    Map<Customer, List<KeywordLearningRecord>> keywordProgressMap = keywordLearningRecordRepository.findAll()
+//        .stream()
+//        .collect(Collectors.groupingBy(KeywordLearningRecord::getCustomer));
+//    //4. Keyword
+//    for(Customer customer : customerList){
+//            List<KeywordLearningRecord> keywordRecordList = keywordProgressMap.get(customer);
+//
+//      Map<Keyword, KeywordLearningRecord> keywordLearningRecordMap = new HashMap<>();
+//      if (keywordRecordList != null) {
+//        keywordLearningRecordMap = keywordRecordList.stream()
+//            .collect(Collectors.toMap(KeywordLearningRecord::getKeyword, k -> k));
+//      }
+//
+//      for (Keyword k : keywordList) {
+//        KeywordLearningRecord record = keywordLearningRecordMap.get(k);
+//        if (record == null) {
+//          KeywordLearningRecord newRecord = new KeywordLearningRecord(k, customer);
+//          keywordLearningRecordRepository.save(newRecord);
+//        }
+//      }
+//}
+
+  }
+

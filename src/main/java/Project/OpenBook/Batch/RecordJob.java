@@ -39,6 +39,13 @@ public class RecordJob {
   private final EntityManagerFactory entityManagerFactory;
 
   private final int chunkSize = 10;
+  
+  /*
+  * TODO
+  *  여러개의 step 도입 -> 순서보장 체크
+  *  스케쥴링 도입
+  * */
+  
 
   @Bean
   public Job Job_Record() {

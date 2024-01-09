@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @EnableJpaRepositories(excludeFilters = @ComponentScan.Filter(
@@ -16,9 +17,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
     classes = {TopicSearchRepository.class, KeywordSearchRepository.class,
         ChapterSearchRepository.class}))
 @EnableBatchProcessing // Batch를 쓰기 위해 필요한 어노테이션
-
+@EnableScheduling // 스케쥴링을 쓰기 위해 필요한 어노테이션
 public class OpenBookApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(OpenBookApplication.class, args);
     }
