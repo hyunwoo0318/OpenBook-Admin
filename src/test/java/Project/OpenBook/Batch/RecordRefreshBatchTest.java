@@ -69,14 +69,5 @@ public class RecordRefreshBatchTest {
     System.out.println(end - start + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1");
   }
 
-  @Test
-  @DisplayName("시간 비교용")
-  public void generalKeywordRecordTest() {
 
-    long start = System.currentTimeMillis();
-    keywordService.tempLearningRecordInit();
-    long end = System.currentTimeMillis();
-
-    System.out.println(end - start + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1");
-  }
 }

@@ -23,7 +23,7 @@ public class BatchScheduler {
     @Autowired
     private RecordJob recordJob;
 
-    @Scheduled(cron = "0 59 23 * * *")
+    @Scheduled(cron = "0 00 04 * * *")
     public void runJob() {
 
         // job parameter 설정
