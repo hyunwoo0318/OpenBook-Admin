@@ -14,6 +14,8 @@ public interface TopicRepositoryCustom {
 
   public List<Topic> queryTopicsWithQuestionCategory(Integer chapterNum);
 
+  public List<Topic> searchTopic(String input);
+
   public Optional<Topic> queryTopicWithCategory(String topicTitle);
 
   public List<Topic> queryTopicsWithChapter();

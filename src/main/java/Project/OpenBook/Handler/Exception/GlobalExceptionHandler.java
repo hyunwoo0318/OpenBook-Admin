@@ -19,7 +19,9 @@ public class GlobalExceptionHandler {
     ErrorMsgDto errorMsgDto = new ErrorMsgDto(ex.getErrorCode().getErrorMessage());
     List<ErrorMsgDto> errorMsgDtoList = Arrays.asList(errorMsgDto);
     return new ResponseEntity(errorMsgDtoList, ex.getErrorCode().getStatusCode());
+//    return ResponseEntity.status(HttpStatus.OK);
   }
+
 
   @ExceptionHandler({BadCredentialsException.class})
   protected ResponseEntity handleBadCredentialException(BadCredentialsException e) {

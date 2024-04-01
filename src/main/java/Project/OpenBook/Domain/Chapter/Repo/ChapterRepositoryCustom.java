@@ -6,4 +6,7 @@ import java.util.List;
 
 public interface ChapterRepositoryCustom {
   public List<Chapter> queryChaptersWithjjhList();
+
+  public List<Chapter> searchChapter(String input);
+
 }

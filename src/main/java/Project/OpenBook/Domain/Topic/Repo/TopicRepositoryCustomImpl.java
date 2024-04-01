@@ -44,6 +44,17 @@ public class TopicRepositoryCustomImpl implements TopicRepositoryCustom {
   }
 
   @Override
+  public List<Topic> searchTopic(String input) {
+    return queryFactory
+        .selectFrom(topic)
+        .distinct()
+        .leftJoin(topic.chapter, chapter)
+        .fetchJoin()
+        .where(topic.title.contains(input))
+        .fetch();
+  }
+
+  @Override
   public List<Topic> queryTopicsWithQuestionCategory(Integer chapterNum) {
     return queryFactory
         .selectFrom(topic)

@@ -16,4 +16,9 @@ public class ChapterRepositoryCustomImpl implements ChapterRepositoryCustom {
   public List<Chapter> queryChaptersWithjjhList() {
     return queryFactory.selectFrom(chapter).leftJoin(chapter.jjhLists).fetchJoin().fetch();
   }
+
+  @Override
+  public List<Chapter> searchChapter(String input) {
+    return queryFactory.selectFrom(chapter).where(chapter.title.contains(input)).fetch();
+  }
 }

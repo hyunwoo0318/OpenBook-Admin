@@ -53,4 +53,7 @@ public interface KeywordRepositoryCustom {
   public List<Keyword> queryRandomOpenedKeywords(Topic answerTopic, Integer count);
 
   public List<Keyword> queryKeywordsInQuestionCategories(List<Keyword> keywordList);
+
+  public List<Keyword> searchKeywords(String input);
+
 }
