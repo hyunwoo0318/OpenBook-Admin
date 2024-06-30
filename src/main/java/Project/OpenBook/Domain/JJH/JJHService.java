@@ -139,6 +139,7 @@ public class JJHService {
     updateJJHContent();
   }
 
+  @Transactional
   public void updateJJHContent() {
     Integer idx = 1;
 
@@ -184,7 +185,9 @@ public class JJHService {
         }
 
         // 2. 단원 내 토픽들 체크
-        List<Topic> topicList = chapter.getTopicList();
+        List<Topic> topicList = chapter.getTopicList().stream()
+            .sorted(Comparator.comparing(Topic::getNumber))
+            .collect(Collectors.toList());
         for (Topic topic : topicList) {
           JJHContent jjhContent =
               m.get(new jjhContentType(ContentConst.TOPIC_STUDY, topic.getId()));
@@ -221,6 +224,8 @@ public class JJHService {
         }
       }
     }
+
+
   }
 
   @AllArgsConstructor
